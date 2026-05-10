@@ -67,7 +67,7 @@ func run(configPath string) error {
 	}
 	logger.Info("database connected")
 
-	if err := core.RunMigrations(db.DB.DB); err != nil {
+	if err := core.RunMigrations(db.SQLDB()); err != nil {
 		return fmt.Errorf("run migrations: %w", err)
 	}
 	logger.Info("migrations applied")

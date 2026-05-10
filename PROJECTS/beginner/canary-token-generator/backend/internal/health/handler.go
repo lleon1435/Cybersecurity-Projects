@@ -1,4 +1,4 @@
-// AngelaMos | 2026
+// ©AngelaMos | 2026
 // handler.go
 
 package health

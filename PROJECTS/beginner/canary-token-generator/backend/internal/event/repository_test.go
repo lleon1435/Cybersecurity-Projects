@@ -20,8 +20,6 @@ import (
 	"github.com/CarterPerez-dev/cybersecurity-projects/canary-token-generator/backend/internal/token"
 )
 
-func ptr[T any](v T) *T { return &v }
-
 func newRepos(t *testing.T) (*sqlx.DB, *token.Repository, *event.Repository) {
 	t.Helper()
 	db := sqlx.NewDb(testutil.NewTestDB(t), "pgx")
@@ -36,7 +34,7 @@ func seedToken(t *testing.T, repo *token.Repository, id string) *token.Token {
 		Type:         token.TypeWebbug,
 		Memo:         "event-test",
 		AlertChannel: token.ChannelWebhook,
-		WebhookURL:   ptr("https://example.com/hook"),
+		WebhookURL:   testutil.Ptr("https://example.com/hook"),
 		CreatedIP:    "203.0.113.1",
 		CreatedFP:    "abcdef0123456789",
 		Metadata:     json.RawMessage(`{}`),
@@ -80,7 +78,7 @@ func TestRepository_ListByToken_CursorPagination(t *testing.T) {
 		e := &event.Event{
 			TokenID:   tok.ID,
 			SourceIP:  "203.0.113.45",
-			UserAgent: ptr(string(rune('A' + i))),
+			UserAgent: testutil.Ptr(string(rune('A' + i))),
 		}
 		require.NoError(t, evtRepo.Insert(ctx, e))
 	}
@@ -223,7 +221,7 @@ func TestRepository_PruneToLimit_KeepsNewest(t *testing.T) {
 
 	var ids []int64
 	for i := range 5 {
-		e := &event.Event{TokenID: tok.ID, SourceIP: "203.0.113.45", UserAgent: ptr(string(rune('A' + i)))}
+		e := &event.Event{TokenID: tok.ID, SourceIP: "203.0.113.45", UserAgent: testutil.Ptr(string(rune('A' + i)))}
 		require.NoError(t, evtRepo.Insert(ctx, e))
 		ids = append(ids, e.ID)
 		time.Sleep(2 * time.Millisecond)

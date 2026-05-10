@@ -25,8 +25,6 @@ func newRepo(t *testing.T) *token.Repository {
 	return token.NewRepository(db)
 }
 
-func ptr[T any](v T) *T { return &v }
-
 func sampleWebhookToken(id string) *token.Token {
 	return &token.Token{
 		ID:           id,
@@ -34,7 +32,7 @@ func sampleWebhookToken(id string) *token.Token {
 		Type:         token.TypeWebbug,
 		Memo:         "test webbug",
 		AlertChannel: token.ChannelWebhook,
-		WebhookURL:   ptr("https://example.com/hook"),
+		WebhookURL:   testutil.Ptr("https://example.com/hook"),
 		CreatedIP:    "203.0.113.10",
 		CreatedFP:    "0123456789abcdef",
 		Metadata:     json.RawMessage(`{}`),
@@ -48,10 +46,10 @@ func sampleTelegramToken(id string) *token.Token {
 		ManageID:     uuid.New().String(),
 		Type:         token.TypeDocx,
 		Memo:         "Q4 bonuses",
-		Filename:     ptr("Q4_Bonuses_2024.docx"),
+		Filename:     testutil.Ptr("Q4_Bonuses_2024.docx"),
 		AlertChannel: token.ChannelTelegram,
-		TelegramBot:  ptr("123456:ABCDEF"),
-		TelegramChat: ptr("-1001234567890"),
+		TelegramBot:  testutil.Ptr("123456:ABCDEF"),
+		TelegramChat: testutil.Ptr("-1001234567890"),
 		CreatedIP:    "198.51.100.5",
 		CreatedFP:    "fedcba9876543210",
 		Metadata:     json.RawMessage(`{"include_keys":["aws"]}`),

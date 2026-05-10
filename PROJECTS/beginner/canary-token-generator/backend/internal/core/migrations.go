@@ -7,6 +7,7 @@ import (
 	"database/sql"
 	"embed"
 	"fmt"
+	"sync"
 
 	"github.com/pressly/goose/v3"
 )
@@ -14,7 +15,12 @@ import (
 //go:embed migrations/*.sql
 var migrationsFS embed.FS
 
+var gooseMu sync.Mutex
+
 func RunMigrations(db *sql.DB) error {
+	gooseMu.Lock()
+	defer gooseMu.Unlock()
+
 	goose.SetBaseFS(migrationsFS)
 
 	if err := goose.SetDialect("postgres"); err != nil {

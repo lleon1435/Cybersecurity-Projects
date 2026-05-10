@@ -1,4 +1,4 @@
-// AngelaMos | 2026
+// ©AngelaMos | 2026
 // errors.go
 
 package core

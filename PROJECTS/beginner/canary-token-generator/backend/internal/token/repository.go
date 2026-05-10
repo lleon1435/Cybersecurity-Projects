@@ -14,6 +14,8 @@ import (
 
 var ErrNotFound = errors.New("token not found")
 
+const defaultListLimit = 50
+
 type Repository struct {
 	db *sqlx.DB
 }
@@ -130,7 +132,7 @@ type ListOptions struct {
 
 func (r *Repository) ListAll(ctx context.Context, opts ListOptions) ([]Token, error) {
 	if opts.Limit <= 0 {
-		opts.Limit = 50
+		opts.Limit = defaultListLimit
 	}
 	q := `SELECT ` + selectColumns + ` FROM tokens
             ORDER BY created_at DESC

@@ -16,6 +16,8 @@ import (
 
 var ErrNotFound = errors.New("event not found")
 
+const defaultListLimit = 20
+
 type Repository struct {
 	db *sqlx.DB
 }
@@ -77,7 +79,7 @@ func (r *Repository) ListByToken(
 	ctx context.Context, tokenID string, opts ListOptions,
 ) (ListResult, error) {
 	if opts.Limit <= 0 {
-		opts.Limit = 20
+		opts.Limit = defaultListLimit
 	}
 
 	q := `SELECT ` + selectColumns + `

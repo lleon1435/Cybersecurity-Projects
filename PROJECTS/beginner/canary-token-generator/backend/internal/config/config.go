@@ -1,4 +1,4 @@
-// AngelaMos | 2026
+// ©AngelaMos | 2026
 // config.go
 
 package config
@@ -199,7 +199,7 @@ func loadDefaults(k *koanf.Koanf) error {
 var envKeyMap = map[string]string{
 	"DATABASE_URL":                "database.url",
 	"REDIS_URL":                   "redis.url",
-	"ENVIRONMENT":                 "app.environment",
+	"APP_ENVIRONMENT":             "app.environment",
 	"HOST":                        "server.host",
 	"PORT":                        "server.port",
 	"LOG_LEVEL":                   "log.level",

@@ -1,4 +1,4 @@
-// AngelaMos | 2026
+// ©AngelaMos | 2026
 // database.go
 
 package core
@@ -18,6 +18,10 @@ import (
 
 type Database struct {
 	DB *sqlx.DB
+}
+
+func (d *Database) SQLDB() *sql.DB {
+	return d.DB.DB
 }
 
 func NewDatabase(

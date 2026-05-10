@@ -25,9 +25,9 @@ CREATE TABLE tokens (
 
     metadata        JSONB        NOT NULL DEFAULT '{}'::jsonb,
 
-    CONSTRAINT chk_token_type CHECK (type IN
+    CONSTRAINT chk_type CHECK (type IN
         ('webbug', 'slowredirect', 'docx', 'pdf', 'kubeconfig', 'envfile', 'mysql')),
-    CONSTRAINT chk_alert_channel CHECK (alert_channel IN ('telegram', 'webhook')),
+    CONSTRAINT chk_channel CHECK (alert_channel IN ('telegram', 'webhook')),
     CONSTRAINT chk_telegram_complete CHECK (
         alert_channel <> 'telegram' OR
         (telegram_bot IS NOT NULL AND telegram_chat IS NOT NULL)

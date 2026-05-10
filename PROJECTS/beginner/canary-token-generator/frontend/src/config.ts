@@ -1,5 +1,5 @@
 // ===================
-// © AngelaMos | 2026
+// ©AngelaMos | 2026
 // config.ts
 // ===================
 const API_VERSION = 'v1'

@@ -42,7 +42,7 @@ services:
       dockerfile: ../infra/docker/canary.prod
     container_name: ${APP_NAME:-canary-token-generator}-canary
     environment:
-      - ENVIRONMENT=production
+      - APP_ENVIRONMENT=production
       - DATABASE_URL=postgres://canary:${POSTGRES_PASSWORD}@postgres:5432/canary?sslmode=disable
       - REDIS_URL=redis://redis:6379/0
       - PUBLIC_BASE_URL=${PUBLIC_BASE_URL}

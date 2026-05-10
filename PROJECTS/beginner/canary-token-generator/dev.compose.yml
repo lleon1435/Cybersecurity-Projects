@@ -54,7 +54,7 @@ services:
       - canary_gocache:/root/.cache/go-build
       - canary_gomodcache:/go/pkg/mod
     environment:
-      - ENVIRONMENT=development
+      - APP_ENVIRONMENT=development
       - DATABASE_URL=postgres://canary:canary@postgres:5432/canary?sslmode=disable
       - REDIS_URL=redis://redis:6379/0
       - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:58495}

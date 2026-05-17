@@ -35,7 +35,12 @@ export function useManageToken(manageId: string, params?: UseManageTokenParams) 
   const search = buildSearch(params)
   const path = `${MANAGE_PATH_PREFIX}${encodeURIComponent(manageId)}${search}`
   return useQuery({
-    queryKey: [...MANAGE_KEY_PREFIX, manageId, params ?? null],
+    queryKey: [
+      ...MANAGE_KEY_PREFIX,
+      manageId,
+      params?.cursor ?? null,
+      params?.limit ?? null,
+    ],
     queryFn: () => apiGet(path, manageResponseSchema),
     enabled: manageId.length > 0,
     ...QUERY_STRATEGIES.frequent,

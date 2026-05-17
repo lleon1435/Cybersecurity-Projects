@@ -9,25 +9,17 @@ import { Shell } from './shell'
 
 const routes: RouteObject[] = [
   {
-    path: ROUTES.HOME,
-    lazy: () => import('@/pages/landing'),
-  },
-  {
     element: <Shell />,
     children: [
       {
-        path: ROUTES.DASHBOARD,
-        lazy: () => import('@/pages/dashboard'),
+        path: ROUTES.HOME,
+        lazy: () => import('@/pages/landing'),
       },
       {
-        path: ROUTES.SETTINGS,
-        lazy: () => import('@/pages/settings'),
+        path: '*',
+        lazy: () => import('@/pages/landing'),
       },
     ],
-  },
-  {
-    path: '*',
-    lazy: () => import('@/pages/landing'),
   },
 ]
 

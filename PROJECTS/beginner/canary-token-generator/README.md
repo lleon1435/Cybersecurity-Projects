@@ -16,6 +16,8 @@
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat&logo=docker)](https://www.docker.com)
 [![MITRE Engage](https://img.shields.io/badge/MITRE-Engage-red?style=flat)](https://engage.mitre.org/)
 
+[![Live Demo](https://img.shields.io/badge/Live-iglowinthedark.com-green?style=flat&logo=googlechrome)](https://iglowinthedark.com/)
+
 > Self-hosted honeytoken generator. Mints seven kinds of tripwire artifacts — invisible web bugs, booby-trapped PDF/DOCX files, fake `.env` and kubeconfig credentials, and a real MySQL wire-protocol decoy — then alerts you on Telegram or a webhook the moment an attacker touches one.
 
 *This is a quick overview — security theory, architecture, and full walkthroughs are in the [learn modules](#learn).*
@@ -41,6 +43,7 @@ just dev-up     # launches nginx + Vite HMR + Go (Air hot-reload) + Postgres + R
 ```
 
 Open the URL printed by `just init` (typically `http://localhost:22784`). Mint a token, watch the manage page, then trigger it from another tab and refresh.
+or the live demo at [iglowinthedark.com](https://iglowinthedark.com/)
 
 > [!TIP]
 > This project uses [`just`](https://github.com/casey/just) as a command runner. Type `just` to see every available recipe grouped by area.
